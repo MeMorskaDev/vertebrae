@@ -1,0 +1,25 @@
+{
+    "name": "BaseUser",
+    "plural": "BaseUsers",
+    "base": "User",
+    "properties": {
+        "failedTries": {
+            "type": "number",
+            "default": 0
+        },
+        "status": {
+            "type": "string",
+            "default": "enabled"
+        }
+    },
+    "validations": [],
+    "relations": {
+
+    },
+    "acls": [],
+    "methods": {},
+    "hidden": [
+        "failedTries",
+        "status"
+    ]
+}
