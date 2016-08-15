@@ -1,0 +1,20 @@
+{
+    "name": "AuthSession",
+    "prural": "AuthSessions",
+    "base": "AccessToken",
+    "properties": {
+        "roles":{
+            "type":[
+                "string"
+            ]
+        }
+    },
+    "validations":[],
+    "relations":{
+        "user":{
+            "type":"belongsTo",
+            "model":"BaseUser",
+            "foreignKey":"userId"
+        }
+    }
+}

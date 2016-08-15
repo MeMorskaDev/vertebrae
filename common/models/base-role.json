@@ -1,0 +1,16 @@
+{
+    "name": "BaseRole",
+    "prural": "BaseRoles",
+    "base": "Role",
+    "validations":[],
+    "mixins":{
+        "MeAuditFieldsMixin":true
+    },
+    "relations":{
+        "principals":{
+            "type":"hasMany",
+            "model":"BaseRoleMapping",
+            "foreignKey":"roleId"
+        }
+    }
+}

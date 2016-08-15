@@ -1,0 +1,23 @@
+{
+    "name": "BaseUser",
+    "prural": "BaseUsers",
+    "base": "User",
+    "properties": {
+        "failTries": {
+            "type": "number",
+            "default": 0
+        },
+        "status": {
+            "type": "string",
+            "default": "enable"
+        }
+    },
+    "validations":[],
+    "relations":{
+        "accessTokens":{
+            "type":"hasMany",
+            "model":"AuthSession",
+            "foreignKey":"userId"
+        }
+    }
+}
