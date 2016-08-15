@@ -19,5 +19,11 @@
             "model":"AuthSession",
             "foreignKey":"userId"
         }
-    }
+    },
+    "acls": [],
+    "methods": {},
+    "hidden": [
+        "failedTries",
+        "status"
+    ]
 }
