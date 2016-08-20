@@ -16,5 +16,6 @@
             "model":"BaseUser",
             "foreignKey":"userId"
         }
-    }
+    },
+    "isFrameworkModel": true
 }

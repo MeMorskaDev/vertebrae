@@ -98,12 +98,21 @@ module.exports = function BaseUser(BaseUser) {
    * @param {AccessToken} token Access token if login is successful
    */
 
-  BaseUser.login = function(credentials, include, fn) {
+  BaseUser.login = function(credentials, include,options, fn) {
     var self = this;
-    if (typeof include === 'function') {
-      fn = include;
-      include = undefined;
-    }
+   if (options === undefined && fn === undefined) {
+            if (typeof include === 'function') {
+                fn = include;
+                include = undefined;
+                options = {};
+            }
+        } else if (fn === undefined) {
+            if (typeof options === 'function') {
+                fn = options;
+                options = include;
+                include = undefined;
+            }
+        }
 
     fn = fn || utils.createPromiseCallback();
 

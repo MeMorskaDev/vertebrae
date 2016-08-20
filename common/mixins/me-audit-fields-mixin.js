@@ -1,3 +1,4 @@
+var loopback = require('loopback');
 module.exports = function MeAuditFieldsMixin(Model) {
 
     console.log('Model.defination.name ', Model.definition);
@@ -34,7 +35,7 @@ module.exports = function MeAuditFieldsMixin(Model) {
 }
 
 function injectAuditFields(ctx, next) {
-    console.log('ctx ',ctx);
+    //console.log('ctx ',ctx);
     
     console.log('ctx.Model.defination.settings.mixins.MeAuditFieldsMixin ', ctx.Model.definition.settings.mixins.MeAuditFieldsMixin);
 
@@ -48,10 +49,11 @@ function injectAuditFields(ctx, next) {
 
     console.log('context.ctx ', context.ctx);
     var cctx = context.ctx || {};
+    console.log('cctx ',cctx);
+    var remoteUser = cctx.remoteUser || 'system';
+    console.log('remortUser ',remoteUser);
+     
 
-    var remortUser = cctx.remortUser || 'system';
-    console.log('remortUser ',remortUser);
-    
     var currentDateTime = new Date();
 
     var protectedfields = ['_type', '_createdBy', '_modifiedBy', '_createdOn', '_modifiedOn'];
@@ -67,6 +69,7 @@ function injectAuditFields(ctx, next) {
     var currentInstance = ctx.currentInstance;
 
     console.log('Current Instance ', currentInstance);
+    
 
     console.log('ctx.isNewInstance ', ctx.isNewInstance);
     protectedfields.forEach(function (field) {
@@ -91,15 +94,15 @@ function injectAuditFields(ctx, next) {
 
         if (ctx.isNewInstance) {
             ctx.instance._type = ctx.Model.definition.name;
-            ctx.instance._createdBy = remortUser;
+            ctx.instance._createdBy = remoteUser;
             ctx.instance._createdOn = currentDateTime;
         }
-        ctx.instance._modifiedBy = remortUser;
+        ctx.instance._modifiedBy = remoteUser;
         ctx.instance._modifiedOn = currentDateTime;
 
 
     } else {
-        ctx.data._modifiedBy = remortUser;
+        ctx.data._modifiedBy = remoteUser;
         ctx.data._modifiedOn = currentDateTime;
     }
 

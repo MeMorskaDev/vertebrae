@@ -1,4 +1,5 @@
 {
+  
   "initial:before": {
     "loopback#favicon": {}
   },
@@ -10,42 +11,56 @@
         "credentials": true,
         "maxAge": 86400
       }
-    },
-    "helmet#xssFilter": {},
-    "helmet#frameguard": {
-      "params": [ 
-        "deny"
-       ]
-    },
-    "helmet#hsts": {
+    }
+  },
+  "session:before": {
+    "loopback#context": {},
+    "./middleware/pre-auth-context-populator": {
       "params": {
-        "maxAge": 0,
-        "includeSubdomains": true
+        "excludeHeadersList": [
+          "host",
+          "accept-encoding",
+          "accept",
+          "content-type",
+          "content-length",
+          "connection",
+          "user-agent",
+          "x-jwt-assertion",
+          "cookie",
+          "if-none-match"
+        ],
+        "queryStringContext": [
+          "device-type",
+          "location",
+          "language",
+          "tenant-id"
+        ]
       }
     },
-    "helmet#hidePoweredBy": {},
-    "helmet#ieNoOpen": {},
-    "helmet#noSniff": {},
-    "helmet#noCache": { 
-      "enabled": false
+    "./middleware/context-populator-filter": {
+      "enabled": true
     }
   },
-  "session": {
-  },
+  "session": {},
+  "session:after": {},
   "auth": {
   },
-  "auth:after":{
-      "./middleware/post-auth-context-populator":{}
+  "auth:after": {
+    "./middleware/post-auth-context-populator": {}
+    
   },
-  "parse": {
-  },
+  "parse": {},
   "routes": {
     "loopback#rest": {
-      "paths": ["${restApiRoot}"]
+      "paths": [
+        "${restApiRoot}"
+      ]
+    },
+    "./middleware/context-populator-filter": {
+      "enabled": true
     }
   },
-  "files": {
-  },
+  "files": {},
   "final": {
     "loopback#urlNotFound": {}
   },

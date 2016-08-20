@@ -18,6 +18,16 @@
             "type":"hasMany",
             "model":"AuthSession",
             "foreignKey":"userId"
+        },
+        "identities": {
+            "type": "hasMany",
+            "model": "userIdentity",
+            "foreignKey": "userId"
+        },
+        "credentials": {
+            "type": "hasMany",
+            "model": "userCredential",
+            "foreignKey": "userId"
         }
     },
     "acls": [],

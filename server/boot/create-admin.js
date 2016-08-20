@@ -35,7 +35,7 @@ module.exports = function Admin(app, done) {
                 "description": "Memorksa Admin",
                 "id": "adminRoleId"
             }, function (err, res) {
-                console.log('err ',err,'res ',res.body)
+               // console.log('err ',err,'res ',res.body)
                 if (err) {
                     if(err.code === 11000){
                         return cb();
