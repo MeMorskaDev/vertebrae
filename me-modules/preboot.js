@@ -1,6 +1,6 @@
 
-var SharedClass = require('strong-remoting').SharedClass;
-var SharedMethod = require('strong-remoting/lib/shared-method');
+var SharedClass = require('../node_modules/loopback/node_modules/strong-remoting').SharedClass;
+var SharedMethod = require('../node_modules/loopback/node_modules/strong-remoting/lib/shared-method');
 var debug = require('debug')('strong-remoting:shared-method');
 //var traverse = require('traverse');
 //var assert = require('assert');
@@ -173,6 +173,8 @@ function convertValueToTargetType(argName, value, targetType) {
 }
 
 var injectOptions = function injectOptions() {
+
+    
     SharedMethod.prototype.invoke = function(scope, args, remotingOptions, ctx, cb) {
 
         var accepts = this.accepts;
@@ -190,8 +192,6 @@ var injectOptions = function injectOptions() {
             cb = remotingOptions;
             remotingOptions = {};
         }
-
-        //console.log('my invoke', ctx.method.stringName, sharedMethod.name);
 
         // map the given arg data in order they are expected in
         if (accepts) {

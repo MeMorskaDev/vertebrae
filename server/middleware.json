@@ -4,6 +4,7 @@
     "loopback#favicon": {}
   },
   "initial": {
+    "loopback-context#per-request": {},
     "compression": {},
     "cors": {
       "params": {

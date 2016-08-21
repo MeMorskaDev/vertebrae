@@ -1,4 +1,6 @@
 var loopback = require('loopback');
+var LoopbackContext = require('loopback-context');
+
 //var log = require('../../ev-modules/ev-logger')('context-populator-filter');
 /**
  * Context Populator Filter
@@ -19,15 +21,15 @@ module.exports = function ContextPopulatorFilter(options) {
 
     return function populateContext(req, res, next) {
         if (req.callContext) {
-            var loopbackContext = loopback.getCurrentContext();
+            var loopbackContext = LoopbackContext.getCurrentContext();
             if (loopbackContext) {
                 loopbackContext.set('callContext', req.callContext);
-
-                console.log('req.callContext ', req.callContext);
                // log.debug('context set = ' , JSON.stringify(req.callContext));
             } else {
                 throw (new Error('call context is null'));
             }
+
+          
         }
         next();
     };

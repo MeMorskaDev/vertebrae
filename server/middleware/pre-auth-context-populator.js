@@ -23,7 +23,6 @@ function setContextValue(callContext, key, valueobj) {
 }
 
 module.exports = function preAuthContextPopulator(options) {
-    console.log('optinos ',options);
 
     excludeHeadersList = options.excludeHeadersList || [];
     queryStringContext = options.queryStringContext || [];
@@ -80,10 +79,6 @@ module.exports = function preAuthContextPopulator(options) {
         if (!callContext.ctx.lang && req.headers[langKey]) {
             callContext.ctx.lang = req.headers[langKey].split(',')[0];
         }
-
-        // Object.keys(callContext.ctx).map(function(key, index) {
-        //     callContext.ctxWeights[key] = callContext.ctxWeights[key] || '0';
-        // });
 
         req.callContext = callContext;
 

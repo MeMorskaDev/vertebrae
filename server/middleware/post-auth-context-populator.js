@@ -14,7 +14,6 @@ module.exports = function postAuthContextPopulator(options) {
 
     return function setRequestContext(req, res, next) {
          var loopbackContext = loopback.getCurrentContext();
-        console.log('loopbackContext ',loopbackContext);
         if (req.accessToken) {
             var callContext = req.callContext || {};
             callContext.ctx = callContext.ctx || {};
@@ -27,22 +26,17 @@ module.exports = function postAuthContextPopulator(options) {
                         // TODO will put generic check for Array
                         if (key === 'roles') {
                             callContext.ctx[camelCase(key)] = JSON.parse(JSON.stringify(instance[key]));
-                        } else {
+                        }else if(key === 'username'){
+                            callContext.ctx.remoteUser = instance[key];
+                        } 
+                        else {
                             callContext.ctx[camelCase(key)] = instance[key];
                         }
                     }
                 });
             }
 
-            callContext.ctx.remoteUser = req.accessToken.username;
-
-            // Object.keys(callContext.ctx).map(function(key, index) {
-            //     callContext.ctxWeights[key] = callContext.ctxWeights[key] || '0';
-            // });
-
             req.callContext = callContext;
-
-            console.log('Inside postauth context ', req.callContext);
            // log.debug('postAuthContextPopulator : context setting as  = ' , JSON.stringify(callContext));
 
         }

@@ -2,7 +2,6 @@ var async = require('async');
 var loopback = require('loopback');
 
 module.exports = function Admin(app, done) {
-    console.log('Inside Create Admin');
     async.parallel([
         function createAdmin(cb) {
             var BaseUser = loopback.getModelByType('BaseUser');
@@ -13,7 +12,6 @@ module.exports = function Admin(app, done) {
                 "password": "admin",
                 "id": "adminBaseUserId"
             }, function (err, res) {
-                console.log('err ',err, 'res ',res );
                 if (err){
                     
                         if(err.code === 11000){
