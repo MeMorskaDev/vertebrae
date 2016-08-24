@@ -1,0 +1,39 @@
+{
+    "name": "BaseUser",
+    "prural": "BaseUsers",
+    "base": "User",
+    "properties": {
+        "failTries": {
+            "type": "number",
+            "default": 0
+        },
+        "status": {
+            "type": "string",
+            "default": "enable"
+        }
+    },
+    "validations":[],
+    "relations":{
+        "accessTokens":{
+            "type":"hasMany",
+            "model":"AuthSession",
+            "foreignKey":"userId"
+        },
+        "identities": {
+            "type": "hasMany",
+            "model": "userIdentity",
+            "foreignKey": "userId"
+        },
+        "credentials": {
+            "type": "hasMany",
+            "model": "userCredential",
+            "foreignKey": "userId"
+        }
+    },
+    "acls": [],
+    "methods": {},
+    "hidden": [
+        "failedTries",
+        "status"
+    ]
+}
