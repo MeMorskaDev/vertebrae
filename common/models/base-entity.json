@@ -1,0 +1,19 @@
+{
+    "name": "BaseEntity",
+    "prural": "BaseEntitys",
+    "base": "PersistedModel",
+    "validations":[],
+    "mixins":{
+        "MeAuditFieldsMixin":true
+    },
+    "relations":{
+    },
+    "acls":[
+        {
+            "accessType":"WRITE",
+            "principalType":"ROLE",
+            "principalId":"$authenticated",
+            "permission":"DENY"
+        }
+    ]
+}

@@ -4,7 +4,8 @@
       "loopback/common/models",
       "loopback/server/models",
       "../common/models",
-      "./models"
+      "./models",
+      "loopback-component-passport/lib/models"
     ],
     "mixins": [
       "loopback/common/mixins",
@@ -13,23 +14,52 @@
       "./mixins"
     ]
   },
+  "Test":{
+    "dataSource":"mongodb_dev",
+    "public":true
+  },
+  "userIdentity":{
+    "dataSource":"mongodb_dev",
+    "public":true
+  },
+  "userCredential":{
+    "dataSource":"mongodb_dev",
+    "public":true
+  },
+  "AuthSession":{
+    "dataSource":"mongodb_dev",
+    "public":true
+  },
+  "BaseUser":{
+    "dataSource":"mongodb_dev",
+    "public":true
+  },
+  "BaseRoleMapping": {
+    "dataSource": "mongodb_dev",
+    "public": true
+  },
+  "BaseRole": {
+    "dataSource": "mongodb_dev",
+    "public": true
+  },
   "User": {
-    "dataSource": "db"
+    "dataSource": "mongodb_dev",
+    "public":false
   },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "mongodb_dev",
     "public": false
   },
   "ACL": {
-    "dataSource": "db",
-    "public": false
+    "dataSource": "mongodb_dev",
+    "public": true
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "mongodb_dev",
     "public": false
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "mongodb_dev",
     "public": false
   }
 }
