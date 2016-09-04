@@ -1,6 +1,6 @@
 
-var SharedClass = require('../node_modules/loopback/node_modules/strong-remoting').SharedClass;
-var SharedMethod = require('../node_modules/loopback/node_modules/strong-remoting/lib/shared-method');
+var SharedClass = require('strong-remoting').SharedClass;
+var SharedMethod = require('strong-remoting/lib/shared-method');
 var debug = require('debug')('strong-remoting:shared-method');
 //var traverse = require('traverse');
 //var assert = require('assert');
