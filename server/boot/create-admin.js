@@ -1,5 +1,6 @@
 var async = require('async');
 var loopback = require('loopback');
+var log = require('../../me-modules/me-logger')('create-admin');
 
 module.exports = function Admin(app, done) {
     async.parallel([
@@ -11,16 +12,18 @@ module.exports = function Admin(app, done) {
                 "email": "admin@memorska.com",
                 "password": "admin",
                 "id": "adminBaseUserId"
-            }, function (err, res) {
+            }, function (err, baseUser) {
                 if (err){
                     
                         if(err.code === 11000){
+                            log.info('Base User Already Created ');
                            return cb();
                         }
+                        log.error('Error in Base User Creation ',err);
                         cb(err);
                 } 
                 else {
-                    console.log('User Created ', res.body);
+                    log.info('Base User Created ',baseUser);
                     cb();
                 }
             })
@@ -32,41 +35,54 @@ module.exports = function Admin(app, done) {
                 "name": "admin",
                 "description": "Memorksa Admin",
                 "id": "adminRoleId"
-            }, function (err, res) {
+            }, function (err, baseRole) {
                // console.log('err ',err,'res ',res.body)
                 if (err) {
                     if(err.code === 11000){
+                        log.info('Base Role Already Created');
                         return cb();
                     }
+                    log.error('Error in Base Role Creation ',baseRole);
                     cb(err);
                 }
                 else {
-                    console.log('Role Created ', res.body);
+                    log.info('Base Role Created ',baseRole);
                     cb();
                 }
             })
         }
     ], function (err) {
-
+        if(err)
+        {   
+            log.error('Error in creating Base User or Base Role');
+            return cb(err);
+        }else{
         var BaseRoleMapping = loopback.getModelByType('BaseRoleMapping');
-
         BaseRoleMapping.create({
             "id":"adminRoleMappingId",
             "principalType": "USER",
             "principalId": "adminBaseUserId",
             "roleId": "adminRoleId"
-        },function(params) {
+        },function(err,baseRoleMapping) {
             if(err) 
             {
                 if(err.code === 11000){
+                        log.info('Base Role Mapping Already Created');
                       return done();
                 }
+                log.error('Error in Creating Base Role Mapping ',err);
                 done(err);
 
             }
             else{
+                log.info('Base Role Mapping Created ',baseRoleMapping);
                 done();
             }
         })
+        }
+
+        
+
+     
     })
 }

@@ -3,11 +3,11 @@
     "name": "db",
     "connector": "memory"
   },
-  "mongodb_dev": { 
-    "name": "mongodb_dev",
+  "mongodbDev": { 
+    "name": "mongodbDev",
     "connector": "mongodb",
     "host": "127.0.0.1", 
-    "database": "devDB", 
+    "database": "mongodbDev", 
     "username": "", 
     "password": "", 
     "port": 27017 
