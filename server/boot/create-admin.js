@@ -1,6 +1,6 @@
 var async = require('async');
 var loopback = require('loopback');
-var log = require('../../me-modules/me-logger')('create-admin');
+var log = require('../../common-modules/logger')('create-admin');
 
 module.exports = function Admin(app, done) {
     async.parallel([
