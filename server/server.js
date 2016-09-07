@@ -1,7 +1,7 @@
-var preboot = require('../me-modules/preboot');
+var preboot = require('../common-modules/preboot');
 var loopback = require('loopback');
 var boot = require('loopback-boot');
-var passport = require('../me-modules/me-passport');
+var passport = require('../common-modules/passport');
 
 preboot.injectOptions();
 

@@ -1,8 +1,8 @@
-var log = require('../../me-modules/me-logger')('me-audit-fields-mixin');
+var log = require('../../common-modules/logger')('me-audit-fields-mixin');
 var loopback = require('loopback');
 var LoopbackContext = require('loopback-context');
 
-module.exports = function MeAuditFieldsMixin(Model) {
+module.exports = function AuditFieldsMixin(Model) {
 
     Model.defineProperty('_type', {
         type: String,

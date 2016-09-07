@@ -15,51 +15,51 @@
     ]
   },
   "Test":{
-    "dataSource":"mongodb_dev",
+    "dataSource":"mongodbDev",
     "public":true
   },
   "userIdentity":{
-    "dataSource":"mongodb_dev",
+    "dataSource":"mongodbDev",
     "public":true
   },
   "userCredential":{
-    "dataSource":"mongodb_dev",
+    "dataSource":"mongodbDev",
     "public":true
   },
   "AuthSession":{
-    "dataSource":"mongodb_dev",
+    "dataSource":"mongodbDev",
     "public":true
   },
   "BaseUser":{
-    "dataSource":"mongodb_dev",
+    "dataSource":"mongodbDev",
     "public":true
   },
   "BaseRoleMapping": {
-    "dataSource": "mongodb_dev",
+    "dataSource": "mongodbDev",
     "public": true
   },
   "BaseRole": {
-    "dataSource": "mongodb_dev",
+    "dataSource": "mongodbDev",
     "public": true
   },
   "User": {
-    "dataSource": "mongodb_dev",
+    "dataSource": "mongodbDev",
     "public":false
   },
   "AccessToken": {
-    "dataSource": "mongodb_dev",
+    "dataSource": "mongodbDev",
     "public": false
   },
   "ACL": {
-    "dataSource": "mongodb_dev",
+    "dataSource": "mongodbDev",
     "public": true
   },
   "RoleMapping": {
-    "dataSource": "mongodb_dev",
+    "dataSource": "mongodbDev",
     "public": false
   },
   "Role": {
-    "dataSource": "mongodb_dev",
+    "dataSource": "mongodbDev",
     "public": false
   }
 }

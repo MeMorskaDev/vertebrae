@@ -4,7 +4,7 @@
     "base": "PersistedModel",
     "validations":[],
     "mixins":{
-        "MeAuditFieldsMixin":true
+        "AuditFieldsMixin":true
     },
     "relations":{
     },

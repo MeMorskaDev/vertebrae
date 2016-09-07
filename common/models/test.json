@@ -16,6 +16,6 @@
     },
     "validations":[],
     "mixins":{
-        "MeAuditFieldsMixin":true
+        "AuditFieldsMixin":true
     }
 }

@@ -1,8 +1,13 @@
+var PrettyStream = require('bunyan-prettystream');
+var prettyStdOut = new PrettyStream();
+prettyStdOut.pipe(process.stdout);
+
 var logConfig={
     Streams: [
     {
       level: 'debug',
-      path: '/vertebrae/vertebrae.log'
+      path: '/vertebrae/vertebrae.log',
+      stream: prettyStdOut
     }
   ]
 };
@@ -24,7 +29,12 @@ var levels =["debug","info","warn","error","none","fatal"];
     {
       level: 'error',
       path: '/vertebrae.log'
-    }
+    },
+    {
+      level: 'debug',
+      path: '/vertebrae/vertebrae.log',
+      stream: prettyStdOut
+    }// prettyStdOut will format your console output 
   ]
  * 
  * You can define a array of stream;
