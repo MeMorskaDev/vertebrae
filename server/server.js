@@ -170,7 +170,7 @@ function loadClientMiddleware(options, env, callback) {
     clientmiddleware = JSON.parse(replaceAll(tempmiddleware, temp, relativePath));
   }
   var middleware = boot.ConfigLoader.loadMiddleware(__dirname, env);
-  var finalMiddleware=mergeUtil.mergeObject(middleware, clientmiddleware);
+  var finalMiddleware=mergeUtil.mergeJSON(middleware, clientmiddleware);
   
   options.middleware = finalMiddleware;
   callback();
