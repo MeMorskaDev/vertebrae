@@ -4,7 +4,7 @@
     "base": "Role",
     "validations":[],
     "mixins":{
-        "MeAuditFieldsMixin":true
+        "AuditFieldsMixin":true
     },
     "relations":{
         "principals":{
