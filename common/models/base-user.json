@@ -30,6 +30,9 @@
             "foreignKey": "userId"
         }
     },
+    "mixins":{
+       "AuditFieldsMixin":true 
+    },
     "acls": [],
     "methods": {},
     "hidden": [

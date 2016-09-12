@@ -55,7 +55,7 @@ module.exports = function Admin(app, done) {
         if(err)
         {   
             log.error('Error in creating Base User or Base Role');
-            return cb(err);
+            return done(err);
         }else{
         var BaseRoleMapping = loopback.getModelByType('BaseRoleMapping');
         BaseRoleMapping.create({
