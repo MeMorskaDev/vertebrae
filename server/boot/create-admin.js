@@ -5,13 +5,12 @@ var log = require('../../common-modules/logger')('create-admin');
 module.exports = function Admin(app, done) {
     async.parallel([
         function createAdmin(cb) {
-            var BaseUser = loopback.getModelByType('BaseUser');
-
+            var BaseUser = loopback.getModel('BaseUser');
             BaseUser.create({
                 "username": "admin",
                 "email": "admin@memorska.com",
                 "password": "admin",
-                "id": "adminBaseUserId"
+                "id": "adminUserId"
             }, function (err, baseUser) {
                 if (err){
                     
@@ -33,7 +32,7 @@ module.exports = function Admin(app, done) {
 
             BaseRole.create({
                 "name": "admin",
-                "description": "Memorksa Admin",
+                "description": "Memorska Admin",
                 "id": "adminRoleId"
             }, function (err, baseRole) {
                // console.log('err ',err,'res ',res.body)
@@ -61,7 +60,7 @@ module.exports = function Admin(app, done) {
         BaseRoleMapping.create({
             "id":"adminRoleMappingId",
             "principalType": "USER",
-            "principalId": "adminBaseUserId",
+            "principalId": "adminUserId",
             "roleId": "adminRoleId"
         },function(err,baseRoleMapping) {
             if(err) 

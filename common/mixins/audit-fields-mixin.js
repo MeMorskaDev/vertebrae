@@ -36,9 +36,10 @@ module.exports = function AuditFieldsMixin(Model) {
 }
 
 function injectAuditFields(ctx, next) {
-    log.debug(' Inside inject audit Fields ');
-    if (!ctx.Model.definition.settings.mixins.MeAuditFieldsMixin) {
+    log.debug(' Inside inject audit Fields ',ctx.Model.modelName);
+    if (!ctx.Model.definition.settings.mixins.AuditFieldsMixin) {
         log.debug(' EV audit mixins disable ', ctx.Model.modelName);
+        return next();
     }
 
     var context = ctx.options;
