@@ -1,4 +1,4 @@
-var log = require('../../common-modules/logger')('me-audit-fields-mixin');
+var log = require('../../common-modules/logger')('audit-fields-mixin');
 var loopback = require('loopback');
 var LoopbackContext = require('loopback-context');
 
