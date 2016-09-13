@@ -52,12 +52,14 @@ app.start = function () {
 //     app.start();
 // });
 
-finalBoot(app,options,function(err){
-  if(err) throw err;
 
-  if(require.main === module)
+if (require.main === module) {
+  finalBoot(app, options, function (err) {
+    if (err) throw err;
+
     app.start();
-})
+  })
+}
 
 
 module.exports.boot = function serverBoot(appInstance, options, cb) {
