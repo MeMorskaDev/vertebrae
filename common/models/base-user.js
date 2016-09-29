@@ -1,8 +1,10 @@
 var loopback =require('loopback');
 var debug = require('debug')('base-user');
+var g = require('strong-globalize')();
 
 module.exports = function BaseUser(BaseUser) {
     
+
     /**
    * Create access token for the logged in user. This method can be overridden to
    * customize how access tokens are generated

@@ -1,4 +1,4 @@
-var log = require('../../common-modules/logger')('audit-fields-mixin');
+var log = require('../../common-modules/logger')('me-audit-fields-mixin');
 var loopback = require('loopback');
 var LoopbackContext = require('loopback-context');
 
@@ -42,9 +42,9 @@ function injectAuditFields(ctx, next) {
         return next();
     }
 
-    var context = ctx.options;
-    var cctx = context.ctx || {};
-    var remoteUser = cctx.remoteUser || 'system';
+    // var context = ctx.options;
+    // var cctx = context.ctx || {};
+     var remoteUser = 'system';
      
     var currentDateTime = new Date();
 
@@ -54,21 +54,21 @@ function injectAuditFields(ctx, next) {
 
     var currentInstance = ctx.currentInstance;
     
-    protectedfields.forEach(function (field) {
+    // protectedfields.forEach(function (field) {
 
-        if (currentInstance) {
-            postData[field] = currentInstance[field];
+    //     if (currentInstance) {
+    //         postData[field] = currentInstance[field];
 
-        } else {
-            delete postData[field];
-            if (postData[field]) {
+    //     } else {
+    //         delete postData[field];
+    //         if (postData[field]) {
 
-                postData.unsetAttribute(field);
+    //             postData.unsetAttribute(field);
 
-            }
-        }
+    //         }
+    //     }
 
-    });
+    // });
 
 
     if (ctx.instance) {

@@ -20,7 +20,7 @@ options.bootDirs.push(path.join(__dirname, 'boot'));
 module.exports.options = options;
 
 var app = module.exports.loopback = loopback();
-preboot.injectOptions();
+//preboot.injectOptions();
 
 app.locals.apphome = __dirname;
 app.start = function () {
