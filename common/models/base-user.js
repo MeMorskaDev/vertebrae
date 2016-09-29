@@ -4,51 +4,6 @@ var g = require('strong-globalize')();
 
 module.exports = function BaseUser(BaseUser) {
     
-     /**
-   * Confirm the user's identity.
-   *
-   * @param {Any} userId
-   * @param {String} token The validation token
-   * @param {String} redirect URL to redirect the user to once confirmed
-   * @callback {Function} callback
-   * @param {Error} err
-   */
- BaseUser.confirm = function(uid, token, redirect,options,fn) {
-    console.log('options ',options);
-   
-   console.log('inside baseuser confirm');
-
-    fn = fn || utils.createPromiseCallback();
-    this.findById(uid, function(err, user) {
-      if (err) {
-        fn(err);
-      } else {
-        if (user && user.verificationToken === token) {
-          user.verificationToken = null;
-          user.emailVerified = true;
-          user.save(function(err) {
-            if (err) {
-              fn(err);
-            } else {
-              fn();
-            }
-          });
-        } else {
-          if (user) {
-            err = new Error(g.f('Invalid token: %s', token));
-            err.statusCode = 400;
-            err.code = 'INVALID_TOKEN';
-          } else {
-            err = new Error(g.f('User not found: %s', uid));
-            err.statusCode = 404;
-            err.code = 'USER_NOT_FOUND';
-          }
-          fn(err);
-        }
-      }
-    });
-    return fn.promise;
-  };
 
     /**
    * Create access token for the logged in user. This method can be overridden to

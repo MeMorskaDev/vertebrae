@@ -42,9 +42,9 @@ function injectAuditFields(ctx, next) {
         return next();
     }
 
-    var context = ctx.options;
-    var cctx = context.ctx || {};
-    var remoteUser = cctx.remoteUser || 'system';
+    // var context = ctx.options;
+    // var cctx = context.ctx || {};
+     var remoteUser = 'system';
      
     var currentDateTime = new Date();
 
